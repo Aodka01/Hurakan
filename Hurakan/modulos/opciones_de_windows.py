@@ -1,11 +1,21 @@
 #funcion de opciones de windows
 import os
 import winreg
+import subprocess
 
 
 def windows_opciones(opcion):
-    comandos = {1: "sfc /scannow", 2: "DISM/Online/Clenup-imagen/RestoreHealth", 3: "chkdsk /f", 4: "powercfg -setactive e9a42b02-d5df-448d-aa00-03f14749eb61",5: "taskkill /f /im OneDrive.exe"}
-    os.system(comandos[opcion])
+    if opcion == 4:
+            try:
+                # Activa el plan de energía "Ultimate Performance"
+                subprocess.run(["powercfg", "-setactive", "SCHEME_MIN"], check=True)
+                print("✅ Plan de energía cambiado a Máximo rendimiento")
+            except Exception as e:
+                print(f"❌ Error: {e}")
+
+    else:
+        comandos = {1: "sfc /scannow", 2: "DISM/Online/Clenup-imagen/RestoreHealth", 3: "chkdsk /f", 5: "taskkill /f /im OneDrive.exe"}
+        os.system(comandos[opcion])
 
 def activador_win(win):
     key = ["","TX9XD-98N7V-6WMQ6-BX7FG-H8Q99", "3KHY7-WNT83-DGQKR-F7HPR-844BM", "7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH", 
