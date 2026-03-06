@@ -6,6 +6,7 @@ from modulos.Borrar_archivo import limpiar_temporales
 from modulos.opciones_de_windows import activador_win, cambio_pro
 from modulos.opciones_red import red
 from modulos.opciones_de_windows import set_visual_effects_performance
+from modulos.kill_task import deshabilitar_servicios
 
 
 
@@ -27,7 +28,7 @@ while True:
 
     if numero == 1:
         print(Fore.LIGHTGREEN_EX + "==opciones y herramienas de windows🔄️==" + Fore.RESET)
-        print(Fore.LIGHTYELLOW_EX + "1.Escaneo y reparacion de archivos de windows\n2.Reparar imagen de windows\n3.Revisar y reparar el disco\n4.Colocar a windows en maximo rendimiento*Solo se puede vercion pro/superior*\n5.cambiar a windows pro\n6.activar windows\n7.limpiar archivos temporales\n8.cerrar Onedrive\n9.perfil de rendimiento visual\n10.regresar\n" + Fore.RESET)
+        print(Fore.LIGHTYELLOW_EX + "1.Escaneo y reparacion de archivos de windows\n2.Reparar imagen de windows\n3.Revisar y reparar el disco\n4.Colocar a windows en maximo rendimiento*Solo se puede vercion pro/superior*\n5.cambiar a windows pro\n6.activar windows\n7.limpiar archivos temporales\n8.cerrar Onedrive\n9.perfil de rendimiento visual\n10.Deshabilitar servicios inecesarios\n11.regresar\n" + Fore.RESET)
         opcion = int(input(Fore.MAGENTA + "introduce la opcion: " + Fore.RESET))
 
         
@@ -69,7 +70,10 @@ while True:
             set_visual_effects_performance()
 
         elif opcion == 10:
-            
+            deshabilitar_servicios()
+            print("Servicios inecesarios deshabilitados‼️")
+
+        elif opcion == 11:
             pass
         else:
             print(Fore.RED + "Opcion Invalida" + Fore.RESET)
@@ -111,6 +115,7 @@ while True:
 
     elif numero == 5:
         print(Fore.LIGHTGREEN_EX + "optimizacion fuerte" + Fore.RESET)
+        deshabilitar_servicios()
         limpiar_temporales()
         windows_opciones(1)
         windows_opciones(2)
