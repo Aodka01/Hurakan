@@ -1,0 +1,21 @@
+import psutil
+from colorama import Fore, Style
+
+# Definir listas de procesos importantes y hibernando (ejemplo)
+procesos_importantes = ["explorer.exe", "svchost.exe", "wininit.exe"]
+procesos_hibernando = ["hiberfil.sys"]  # archivo asociado a hibernación
+
+def mostrar_procesos():
+    for proc in psutil.process_iter(['pid', 'name']):
+        nombre = proc.info['name']
+        pid = proc.info['pid']
+
+        if nombre in procesos_importantes:
+            print(Fore.RED + f"[IMPORTANTE] {nombre} (PID: {pid})" + Style.RESET_ALL)
+        elif nombre in procesos_hibernando:
+            print(Fore.BLUE + f"[HIBERNANDO] {nombre} (PID: {pid})" + Style.RESET_ALL)
+        else:
+            print(Fore.GREEN + f"[ABIERTO] {nombre} (PID: {pid})" + Style.RESET_ALL)
+
+if __name__ == "__main__":
+    mostrar_procesos()
