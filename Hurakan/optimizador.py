@@ -9,6 +9,10 @@ from modulos.opciones_de_windows import set_visual_effects_performance
 from modulos.kill_task import deshabilitar_servicios
 
 
+#agrega soporte para colores en la consola de winows
+os.system('reg add HKCU\\Console /v VirtualTerminalLevel /t REG_DWORD /d 1 /f')
+
+
 
 while True:
     print(Fore.LIGHTRED_EX + " ▄▄▄      ▒█████   ██████   ██  ██ ▄▄▄▄      ")
