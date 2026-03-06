@@ -1,5 +1,6 @@
 #funcion de opciones de windows
 import os
+import winreg
 
 
 def windows_opciones(opcion):
@@ -24,3 +25,22 @@ def activador_win(win):
 def cambio_pro():
     os.system("sc config LicenseManager start= auto & net stop LicenseManager")
     os.system("changepk.exe /productkey G4C2N-CDV7R-8FBFG-FB2PV-FJRC6")
+
+# funcion que setea el perfil de rendimiento visual a "Mejor rendimiento"
+def set_visual_effects_performance():
+    try:
+        # Ruta del registro donde se guarda la configuración
+        key_path = r"Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects"
+        
+        # Abrir la clave en modo escritura
+        key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, key_path, 0, winreg.KEY_SET_VALUE)
+        
+        # Cambiar el valor a 2 (rendimiento)
+        winreg.SetValueEx(key, "VisualFXSetting", 0, winreg.REG_DWORD, 2)
+        
+        # Cerrar la clave
+        winreg.CloseKey(key)
+        
+        print("✅ Perfil de efectos visuales ajustado a 'Mejor rendimiento'")
+    except Exception as e:
+        print(f"❌ Error al modificar el registro: {e}")
